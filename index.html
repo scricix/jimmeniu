@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Crispy Kitchen - Bootstrap 5 HTML Template</title>
+
+        <!-- CSS FILES -->    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">                    
+        <link href="csss/bootstrap.min.css" rel="stylesheet">
+
+        <link href="csss/bootstrap-icons.css" rel="stylesheet">
+
+        <link href="csss/tooplate-crispy-kitchen.css" rel="stylesheet">
+        
+<!--
+
+Tooplate 2129 Crispy Kitchen
+
+https://www.tooplate.com/view/2129-crispy-kitchen
+
+
+
+-->
+
+
+
+<style>
+     /* Stil pentru navbar-ul fixat */
+.navbar-fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Asigură-te că navbar-ul este deasupra altor elemente */
+}
+
+/* Stil pentru conținutul principal pentru a evita suprapunerea cu navbar-ul */
+.main-content {
+    margin-top: 80px; /* Ajustează această valoare în funcție de înălțimea navbar-ului */
+}
+
+/* Stil pentru butoane personalizate */
+.btn-custom {
+    background-color: #dc3545; /* Culoarea de fundal a butonului */
+    color: #fff; /* Culoarea textului */
+    border: none; /* Fără bordură */
+    padding: 10px 150px; /* Ajustează padding-ul pentru buton */
+    border-radius: 5px; /* Colțuri rotunjite */
+    text-align: center; /* Alinierea textului */
+    display: inline-block; /* Face butonul să se comporte ca un element inline-block */
+    transition: background-color 3s ease; /* Efect de tranziție pentru schimbarea culorii de fundal */
+}
+
+.btn-custom:hover {
+    background-color: #15ec0e; /* Schimbă culoarea de fundal la hover */
+}
+
+/* Stil pentru link-uri */
+a {
+    text-decoration: underline; /* Subliniere pentru link-uri */
+    text-decoration-color: rgb(241, 13, 51); /* Culoarea sublinierii */
+    text-decoration-style: dashed; /* Stilul sublinierii */
+    color: black; /* Culoarea textului link-ului */
+}
+
+a:hover {
+    text-decoration-color: rgb(255, 68, 0); /* Schimbă culoarea sublinierii la hover */
+    color: coral; /* Schimbă culoarea textului la hover */
+}
+
+</style>
+    </head>
+    
+    <body>
+        
+        <nav class="navbar navbar-expand-lg bg-white shadow-lg navbar-fixed-top">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <a class="navbar-brand" href="index.html">
+                    Jim Meniu
+                </a>
+
+                
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">Story</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="menu.html">Menu</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="news.html">Our Updates</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+
+               
+
+                </div>
+
+            </div>
+
+             <!-- Mobile button with link -->
+             <a href="../restaurante/restaurant1.php" class="btn btn-custom">
+                Alege Restaurant
+            </a>
+        </nav>
+
+       
+
+        <main>
+
+           
+
+
+            
+            
+
+            <section class="hero">
+                <div class="container">
+                    <div class="row">
+                        <div class="d-lg-none">
+                           
+                        </div>
+
+
+
+                        
+                       
+                        
+                        
+
+                        <div class="col-lg-5 col-12 m-auto">
+                            <div class="heroText">
+
+                                <h1 class="text-white mb-lg-5 mb-3">restaurant reclama</h1>
+
+                                <div class="c-reviews my-3 d-flex flex-wrap align-items-center">
+                                    <div class="d-flex flex-wrap align-items-center">
+                                        <h4 class="text-white mb-0 me-3">5/5</h4>
+
+                                        <div class="reviews-stars">
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star-fill reviews-icon"></i>
+                                            <i class="bi-star reviews-icon"></i>
+                                        </div>
+                                    </div>
+
+                                    <p class="text-white w-100">From <strong>1,206+</strong> Customer Reviews</p>
+                                </div>
+                            </div>
+                        </div>
+
+                       
+                                        
+                       
+
+                       
+                        
+
+
+                     
+                       
+
+                               
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="video-wrap">
+                    <video autoplay="" loop="" muted="" class="custom-video" poster="">
+                        <source src="video/production_ID_3769033.mp4" type="video/mp4">
+                        	Your browser does not support the video tag.
+                    	</video>
+                </div>
+
+                <div class="overlay"></div>
+            </section>
+
+            <section class="menu section-padding">
+                <div class="container">
+                    <div class="row">
+
+
+                              
+
+                                       
+                               
+
+                               
+
+                                
+             
+        </footer>
+
+       <!-- Button to reserve a table -->
+
+
+                    
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- JAVASCRIPT FILES -->
+        <script src="jss/jquery.min.js"></script>
+        <script src="jss/bootstrap.bundle.min.js"></script>
+        <script src="jss/custom.js"></script>
+
+    </body>
+</html>
