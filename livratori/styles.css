@@ -1,0 +1,171 @@
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#autentificare {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+#autentificare input, #autentificare button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#autentificare button {
+    background-color: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+#comenzi-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#filtre {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#filtre select, #filtre input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.comanda {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.comanda h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.comanda p {
+    margin: 5px 0;
+}
+
+.comanda .produse {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.comanda .produse ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.comanda .produse li {
+    margin-bottom: 5px;
+}
+
+.status-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.status-buttons button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #4CAF50; /* Verde pentru toate butoanele */
+    color: white;
+    margin-bottom: 5px;
+}
+
+.status-buttons button:hover {
+    opacity: 0.8;
+}
+
+.status-buttons button:active {
+    background-color: #F44336; /* Roșu când este apăsat */
+}
+
+.status-buttons button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 1; /* Asigură că butonul dezactivat este complet vizibil */
+}
+
+.trimite-bon {
+    background-color: #795548;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.vezi-harta {
+    display: inline-block;
+    background-color: #607D8B;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    #filtre {
+        flex-direction: column;
+    }
+
+    #filtre select, #filtre input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .status-buttons {
+        flex-direction: column;
+    }
+
+    .status-buttons button, .trimite-bon, .vezi-harta {
+        width: 100%;
+    }
+}

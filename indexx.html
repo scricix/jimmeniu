@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Crispy Kitchen - Bootstrap 5 HTML Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="csss/bootstrap.min.css" rel="stylesheet">
+    <link href="csss/bootstrap-icons.css" rel="stylesheet">
+    <link href="csss/tooplate-crispy-kitchen.css" rel="stylesheet">
+    <style>
+        /* Stilurile existente */
+        .navbar-fixed-top {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .main-content {
+            margin-top: 80px;
+        }
+        .btn-custom {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 10px 150px;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+            transition: background-color 3s ease;
+        }
+        .btn-custom:hover {
+            background-color: #15ec0e;
+        }
+        a {
+            text-decoration: underline;
+            text-decoration-color: rgb(241, 13, 51);
+            text-decoration-style: dashed;
+            color: black;
+        }
+        a:hover {
+            text-decoration-color: rgb(255, 68, 0);
+            color: coral;
+        }
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+        .auth-buttons button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-white shadow-lg navbar-fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Jim Meniu</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">Story</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="menu.html">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">Our Updates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="auth-buttons">
+                <button id="registerBtn" class="btn btn-outline-primary me-2">Înregistrare</button>
+                <button id="loginBtn" class="btn btn-primary me-2">Logare</button>
+                <button id="logoutBtn" class="btn btn-danger" style="display: none;">Delogare</button>
+            </div>
+        </div>
+        <a href="../restaurante/restaurant1.php" class="btn btn-custom">Alege Restaurant</a>
+    </nav>
+
+    <main>
+        <!-- Conținutul principal al paginii -->
+    </main>
+
+    <!-- Modal pentru Înregistrare -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registerModalLabel">Înregistrare</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="registerForm">
+                        <div class="mb-3">
+                            <label for="registerLastName" class="form-label">Nume</label>
+                            <input type="text" class="form-control" id="registerLastName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerFirstName" class="form-label">Prenume</label>
+                            <input type="text" class="form-control" id="registerFirstName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="registerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPhone" class="form-label">Număr de telefon</label>
+                            <input type="tel" class="form-control" id="registerPhone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerAddress" class="form-label">Adresă</label>
+                            <textarea class="form-control" id="registerAddress" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="registerPassword" class="form-label">Parolă</label>
+                            <input type="password" class="form-control" id="registerPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Înregistrare</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pentru Logare -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Logare</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label for="loginName" class="form-label">Nume</label>
+                            <input type="text" class="form-control" id="loginName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPhone" class="form-label">Număr de telefon</label>
+                            <input type="tel" class="form-control" id="loginPhone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Parolă</label>
+                            <input type="password" class="form-control" id="loginPassword" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Logare</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="jss/jquery.min.js"></script>
+    <script src="jss/bootstrap.bundle.min.js"></script>
+    <script src="jss/custom.js"></script>
+   <script>// Variabilă pentru a stoca intervalul de actualizare a activității
+    let activityUpdateInterval;
+    
+    // Funcție pentru autentificare
+    function login(event) {
+        event.preventDefault();
+        const formData = {
+            name: document.getElementById('loginName').value,
+            phone: document.getElementById('loginPhone').value,
+            password: document.getElementById('loginPassword').value
+        };
+    
+        fetch('/inregistrare/login.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('userName', data.name);
+                localStorage.setItem('userEmail', data.email);
+                localStorage.setItem('userPhone', data.phone);
+                localStorage.setItem('sessionToken', data.sessionToken);
+                updateAuthButtons();
+                startActivityUpdates();
+                $('#loginModal').modal('hide');
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('A apărut o eroare la autentificare. Vă rugăm să încercați din nou.');
+        });
+    }
+    
+    // Funcție pentru deconectare
+    function logout() {
+        const sessionToken = localStorage.getItem('sessionToken');
+        const phone = localStorage.getItem('userPhone');
+        fetch('/inregistrare/logout.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+                sessionToken: sessionToken,
+                phone: phone
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                localStorage.removeItem('isLoggedIn');
+                localStorage.removeItem('userName');
+                localStorage.removeItem('userEmail');
+                localStorage.removeItem('userPhone');
+                localStorage.removeItem('sessionToken');
+                updateAuthButtons();
+                stopActivityUpdates();
+                alert(data.message);
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('A apărut o eroare la deconectare. Vă rugăm să încercați din nou.');
+        });
+    }
+    
+    // Funcție pentru actualizarea butoanelor de autentificare
+    function updateAuthButtons() {
+        const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+        document.getElementById('registerBtn').style.display = isLoggedIn ? 'none' : 'inline-block';
+        document.getElementById('loginBtn').style.display = isLoggedIn ? 'none' : 'inline-block';
+        document.getElementById('logoutBtn').style.display = isLoggedIn ? 'inline-block' : 'none';
+    }
+    
+    // Funcție pentru a începe actualizările periodice ale activității
+    function startActivityUpdates() {
+        activityUpdateInterval = setInterval(() => {
+            updateActivity();
+            checkSession();
+        }, 60000); // Actualizează și verifică la fiecare minut
+    }
+    
+    // Funcție pentru a opri actualizările periodice ale activității
+    function stopActivityUpdates() {
+        clearInterval(activityUpdateInterval);
+    }
+    
+    // Funcție pentru actualizarea activității
+    function updateActivity() {
+        const sessionToken = localStorage.getItem('sessionToken');
+        const phone = localStorage.getItem('userPhone');
+        if (sessionToken && phone) {
+            fetch('/inregistrare/update_activity.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    sessionToken: sessionToken,
+                    phone: phone
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.success) {
+                    console.error('Eroare la actualizarea activității:', data.message);
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    }
+    
+    // Funcție pentru verificarea validității sesiunii
+    function checkSession() {
+        const sessionToken = localStorage.getItem('sessionToken');
+        const phone = localStorage.getItem('userPhone');
+        if (sessionToken && phone) {
+            fetch('/inregistrare/update_activity.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ 
+                    sessionToken: sessionToken,
+                    phone: phone
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (!data.success) {
+                    // Sesiunea nu mai este validă, deconectăm utilizatorul
+                    logout();
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    }
+    
+    // Funcție pentru înregistrare
+    function register(event) {
+        event.preventDefault();
+        const formData = {
+            lastName: document.getElementById('registerLastName').value,
+            firstName: document.getElementById('registerFirstName').value,
+            email: document.getElementById('registerEmail').value,
+            phone: document.getElementById('registerPhone').value,
+            address: document.getElementById('registerAddress').value,
+            password: document.getElementById('registerPassword').value
+        };
+    
+        fetch('/inregistrare/register.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                $('#registerModal').modal('hide');
+            } else {
+                alert(data.message);
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('A apărut o eroare la înregistrare. Vă rugăm să încercați din nou.');
+        });
+    }
+    
+    // Adăugare evenimente pentru butoane și formulare
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('loginForm').addEventListener('submit', login);
+        document.getElementById('registerForm').addEventListener('submit', register);
+        document.getElementById('logoutBtn').addEventListener('click', logout);
+        document.getElementById('registerBtn').addEventListener('click', function() {
+            $('#registerModal').modal('show');
+        });
+        document.getElementById('loginBtn').addEventListener('click', function() {
+            $('#loginModal').modal('show');
+        });
+    
+        // Verifică starea de autentificare la încărcarea paginii
+        updateAuthButtons();
+        if (localStorage.getItem('isLoggedIn') === 'true') {
+            startActivityUpdates();
+        }
+    });
+    </script>
+
+</body>
+</html>

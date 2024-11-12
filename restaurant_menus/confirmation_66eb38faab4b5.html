@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmare Comandă #66eb38faab4b5</title>
+    <style>
+        :root { --primary: #4CAF50; --secondary: #2196F3; --accent: #FF9800; --background: #F5F5F5; --text: #333; }
+        body { font-family: 'Roboto', Arial, sans-serif; line-height: 1.6; color: var(--text); background-color: var(--background); margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; background-color: #fff; border-radius: 15px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); overflow: hidden; }
+        h1, h2 { color: var(--primary); margin-top: 0; }
+        .order-details, .customer-info { background-color: #fff; border: 1px solid var(--secondary); padding: 20px; margin-top: 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .order-item { display: flex; justify-content: space-between; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--secondary); }
+        .order-total { font-weight: bold; margin-top: 20px; padding-top: 10px; border-top: 2px solid var(--primary); }
+        .order-status { position: sticky; top: 20px; margin-top: 20px; background-color: var(--accent); color: #fff; padding: 20px; border-radius: 10px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: all 0.3s ease; }
+        .order-status:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
+        .status-icon { font-size: 24px; margin-right: 10px; }
+        #statusText { font-size: 1.2em; font-weight: bold; }
+        .highlight { color: var(--secondary); font-weight: bold; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+        .pulse { animation: pulse 2s infinite; }
+        @media (max-width: 600px) { body { padding: 10px; } .container { border-radius: 0; } }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Comandă Confirmată</h1>
+    <p>Comanda dumneavoastră cu numărul <span class="highlight">#66eb38faab4b5</span> a fost plasată cu succes.</p>
+    <div class="order-status" id="orderStatus">
+        <h2><span class="status-icon">📦</span>Status Comandă: <span id="statusText" class="pulse">În Procesare</span></h2>
+        <p id="statusMessage">Vă vom informa prin email când comanda va fi expediată.</p>
+    </div>
+    <div class="customer-info">
+        <h2>Informații Client</h2>
+        <p><strong>Nume:</strong> Scricix Scricix</p>
+        <p><strong>Email:</strong> scricixx@gmail.com</p>
+        <p><strong>Telefon:</strong> 0784750449</p>
+        <p><strong>Adresă livrare:</strong> Strada Lorena 5
+5</p>
+    </div>
+    <div class="order-details">
+        <h2>Detalii Comandă</h2>
+        <div class="order-item">
+            <span>Ady (x1)</span>
+            <span>22.00 RON</span>
+        </div>
+        <div class="order-total">
+            <p>Subtotal: <span class="highlight">22.00 RON</span></p>
+            <p>Cost livrare: <span class="highlight">20.00 RON</span></p>
+            <p>Total: <span class="highlight">42.00 RON</span></p>
+        </div>
+    </div>
+</div>
+<script>
+function updateOrderStatus() {
+    fetch('get_order_status.php?order_id=66eb38faab4b5')
+        .then(response => response.json())
+        .then(data => {
+            if (data.status) {
+                document.getElementById('statusText').textContent = data.status;
+                document.getElementById('statusText').classList.add('pulse');
+                setTimeout(() => document.getElementById('statusText').classList.remove('pulse'), 3000);
+                if (data.status === 'Expediată') {
+                    document.getElementById('statusMessage').textContent = 'Comanda dumneavoastră a fost expediată.';
+                    document.querySelector('.status-icon').textContent = '🚚';
+                }
+            }
+        })
+        .catch(error => console.error('Eroare:', error));
+}
+setInterval(updateOrderStatus, 60000);
+updateOrderStatus();
+</script>
+</body>
+</html>

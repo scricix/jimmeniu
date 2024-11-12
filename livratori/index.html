@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionare Comenzi Livratori</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Gestionare Comenzi Livratori</h1>
+    </header>
+    <main>
+        <div id="autentificare">
+            <input type="text" id="name" placeholder="Nume livrator">
+            <input type="password" id="password" placeholder="Parolă">
+            <button id="loginButton">Autentificare</button>
+        </div>
+        <div id="comenzi-container" style="display: none;">
+            <h2 id="welcomeMessage"></h2>
+            <button id="logoutButton">Deconectare</button>
+            <div id="filtre">
+                <select id="sortare">
+                    <option value="created_at">Sortează după Dată</option>
+                    <option value="customer_name">Sortează după Client</option>
+                    <option value="status">Sortează după Status</option>
+                </select>
+                <input type="text" id="filtru" placeholder="Filtrează după client sau adresă">
+            </div>
+            <div id="comenzi-lista"></div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+    <script src="notifications.js"></script>
+</body>
+</html>

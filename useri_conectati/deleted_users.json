@@ -1,0 +1,35 @@
+{
+    "10": null,
+    "14": null,
+    "15": {
+        "id": "15",
+        "name": "Moldoveanu  Adrian",
+        "email": "scricix@gmail.com",
+        "phone": "0784750444",
+        "last_activity": "2024-09-24 00:32:24",
+        "last_activity_unix": "1727127144"
+    },
+    "16": {
+        "id": "16",
+        "name": "Moldoveanu  Adrian",
+        "email": "scricix@gmail.com",
+        "phone": "0784750444",
+        "last_activity": "2024-09-24 00:33:31",
+        "last_activity_unix": "1727127211"
+    },
+    "<br \/>\r\n<b>Warning<\/b>:  Trying to access array offset on value of type null in <b>C:\\xampp\\htdocs\\useri_conectati\\useri_conectati.php<\/b> on line <b>97<\/b><br \/>\r\n": null,
+    "17": {
+        "id": "17",
+        "name": "Scricix Scricix",
+        "email": "scricixx@gmail.com",
+        "phone": "0784750449",
+        "last_activity": "2024-09-24 12:52:55"
+    },
+    "18": {
+        "id": "18",
+        "name": "Scricix Scricix",
+        "email": "scricixx@gmail.com",
+        "phone": "0784750449",
+        "last_activity": "2024-09-24 12:56:44"
+    }
+}

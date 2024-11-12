@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meniu - radiociocile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        header { background-color: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 20px 0; position: sticky; top: 0; z-index: 1000; }
+        .header-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        h1 { color: #2c3e50; font-size: 2.5em; }
+        .menu-container { display: flex; flex-wrap: wrap; justify-content: space-between; }
+        .menu-item { background: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 20px; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; width: calc(33.333% - 20px); display: flex; flex-direction: column; }
+        .menu-item:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
+        .menu-item-image { width: 100%; padding-top: 75%; position: relative; overflow: hidden; }
+        .menu-item-image img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; }
+        .menu-item-content { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .menu-item h2 { color: #e74c3c; font-size: 1.5em; margin-bottom: 10px; }
+        .menu-item p { margin-bottom: 15px; }
+        .menu-item .price { font-weight: bold; color: #27ae60; font-size: 1.2em; margin-top: auto; }
+        .menu-item .promo { background: #f39c12; color: #fff; padding: 5px 10px; border-radius: 20px; font-size: 0.9em; display: inline-block; margin-top: 10px; }
+        .add-to-cart { background: #3498db; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; transition: background 0.3s ease; font-size: 1em; margin-top: 10px; }
+        .add-to-cart:hover { background: #2980b9; }
+        .cart-icon { display: flex; align-items: center; cursor: pointer; }
+        .cart-icon i { font-size: 24px; color: #e74c3c; margin-right: 10px; }
+        .cart-count { background: #f39c12; color: #fff; border-radius: 50%; width: 24px; height: 24px; display: flex; justify-content: center; align-items: center; font-size: 14px; }
+        #cart-modal { display: none; position: fixed; z-index: 1001; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4); }
+        .cart-content { background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 600px; border-radius: 8px; transform: translateY(-20px); opacity: 0; transition: all 0.3s ease-out; }
+        #cart-modal.open .cart-content { transform: translateY(0); opacity: 1; }
+        .close { color: #ff0000; float: right; font-size: 32px; font-weight: bold; cursor: pointer; }
+        .close:hover, .close:focus { color: #000; text-decoration: none; cursor: pointer; }
+        .cart-item { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+        .cart-item > * { margin: 5px 0; }
+        .cart-item-image { width: 60px; height: 60px; object-fit: cover; margin-right: 10px; }
+        .cart-item-details { flex: 1; min-width: 150px; }
+        .cart-item-name { font-weight: bold; }
+        .cart-item-restaurant { font-size: 0.9em; color: #666; }
+        .cart-item-price { font-weight: bold; color: #27ae60; }
+        .remove-product { background-color: #ff4d4d; color: white; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.9em; }
+        .cart-summary { margin-top: 20px; border-top: 2px solid #ddd; padding-top: 15px; }
+        .cart-summary p { margin: 8px 0; font-size: 1.1em; }
+        .cart-summary p:last-child { font-weight: bold; font-size: 1.2em; }
+        .checkout-btn { background: linear-gradient(45deg, #2ecc71, #27ae60); color: white; border: none; padding: 10px 20px; border-radius: 25px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .checkout-btn:hover { background: linear-gradient(45deg, #27ae60, #2ecc71); transform: translateY(-2px); box-shadow: 0 6px 8px rgba(0,0,0,0.15); }
+        #cart-items { max-height: 300px; overflow-y: auto; margin-bottom: 15px; }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
+        .cart-icon.animate { animation: bounce 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) { 
+            .menu-item { width: calc(50% - 15px); } 
+            h1 { font-size: 2em; }
+            .menu-item-image { padding-top: 66.67%; }
+        }
+        @media (max-width: 480px) { 
+            .menu-item { width: 100%; } 
+            .container { padding: 10px; }
+            h1 { font-size: 1.5em; }
+            .menu-item-image { padding-top: 56.25%; }
+            .header-content { flex-direction: column; align-items: flex-start; }
+            .cart-icon { margin-top: 10px; }
+            #cart-modal .cart-content { width: 95%; margin: 5% auto; max-height: 90vh; overflow-y: auto; }
+            .cart-item { flex-direction: column; align-items: flex-start; }
+            .cart-item-image { margin-bottom: 10px; }
+            .remove-product { align-self: flex-end; margin-top: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Meniu radiociocile</h1>
+            <div class="cart-icon" onclick="openCart()">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+    <main class="container">
+        <div class="menu-container">
+            <div class="menu-item">
+                <div class="menu-item-image">
+                    <img src="../../uploads/menu_images/66f0492f1124c_bucatar.webp" alt="Adyfffff" loading="lazy">
+                </div>
+                <div class="menu-item-content">
+                    <h2>Adyfffff</h2>
+                    <p>sss</p>
+                    <p class="price">22.00 RON</p>
+                    <p class="promo">23</p>
+                    <button class="add-to-cart" onclick="addToCart(32, 'Adyfffff', 22.00, '../../uploads/menu_images/66f0492f1124c_bucatar.webp', 'radiociocile')">Adaugă în coș</button>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-item-image">
+                    <img src="../../uploads/menu_images/66f05c1dce1e4_bucatar.jpg" alt="bun" loading="lazy">
+                </div>
+                <div class="menu-item-content">
+                    <h2>bun</h2>
+                    <p>tare</p>
+                    <p class="price">33.00 RON</p>
+                    <button class="add-to-cart" onclick="addToCart(33, 'bun', 33.00, '../../uploads/menu_images/66f05c1dce1e4_bucatar.jpg', 'radiociocile')">Adaugă în coș</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="cart-modal">
+        <div class="cart-content">
+            <span class="close" onclick="closeCart()">&times;</span>
+            <h2>Coșul tău</h2>
+            <div id="cart-items"></div>
+            <div id="checkout-form" style="display: none;">
+                <h3>Finalizare comandă</h3>
+                <form id="order-form">
+                    <input type="text" name="name" placeholder="Nume complet" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="tel" name="phone" placeholder="Telefon" required>
+                    <textarea name="address" placeholder="Adresa de livrare" required></textarea>
+                    <button type="submit" class="checkout-btn">Trimite comanda</button>
+                </form>
+            </div>
+            <button id="checkout-btn" class="checkout-btn" onclick="showCheckoutForm()">Finalizează comanda</button>
+        </div>
+    </div>
+    <script>
+        let cart = [];
+        let shippingCost = 0;
+        function loadCart() {
+            const savedCart = localStorage.getItem('cart');
+            if (savedCart) {
+                try {
+                    cart = JSON.parse(savedCart);
+                    cart = cart.filter(item => item && item.id && item.name && !isNaN(item.price) && !isNaN(item.quantity) && item.imagePath && item.restaurantName);
+                } catch (e) {
+                    console.error('Eroare la încărcarea coșului:', e);
+                    cart = [];
+                }
+            }
+            updateCartCount();
+        }
+        function getShippingCost() {
+            fetch('get_shipping_cost.php')
+                .then(response => response.json())
+                .then(data => {
+                    shippingCost = data.shippingCost;
+                })
+                .catch(error => console.error('Error:', error));
+        }
+        loadCart();
+        getShippingCost();
+        function addToCart(id, name, price, imagePath, restaurantName) {
+            id = parseInt(id);
+            price = parseFloat(price);
+            if (isNaN(id) || isNaN(price)) {
+                console.error('ID sau preț invalid');
+                return;
+            }
+            cart.push({id: id, name: name, price: price, quantity: 1, imagePath: imagePath, restaurantName: restaurantName});
+            updateCartCount();
+            saveCart();
+            animateCartIcon();
+        }
+        function updateCartCount() {
+            const count = cart.length;
+            document.querySelector('.cart-count').textContent = count;
+        }
+        function animateCartIcon() {
+            const cartIcon = document.querySelector('.cart-icon');
+            cartIcon.classList.add('animate');
+            setTimeout(() => cartIcon.classList.remove('animate'), 500);
+        }
+        function openCart() {
+            let cartItems = document.getElementById('cart-items');
+            cartItems.innerHTML = '';
+            let subtotal = 0;
+            cart.forEach((item, index) => {
+                if (item && item.id && item.name && !isNaN(item.price) && !isNaN(item.quantity)) {
+                    let itemTotal = item.price * item.quantity;
+                    subtotal += itemTotal;
+                    cartItems.innerHTML += `
+                        <div class="cart-item new">
+                            <img src="${item.imagePath}" alt="${item.name}" class="cart-item-image">
+                            <div class="cart-item-details">
+                                <div class="cart-item-name">${item.name}</div>
+                                <div class="cart-item-restaurant">Restaurant: ${item.restaurantName}</div>
+                                <div class="cart-item-price">${item.price.toFixed(2)} RON</div>
+                            </div>
+                            <button class="remove-product" onclick="removeFromCart(${index})">Șterge</button>
+                        </div>
+                    `;
+                }
+            });
+            let total = subtotal + shippingCost;
+            cartItems.innerHTML += `
+                <div class="cart-summary">
+                    <p>Subtotal: ${subtotal.toFixed(2)} RON</p>
+                    <p>Cost transport: ${shippingCost.toFixed(2)} RON</p>
+                    <p>Total: ${total.toFixed(2)} RON</p>
+                </div>
+            `;
+            document.getElementById('cart-modal').style.display = 'block';
+            setTimeout(() => document.getElementById('cart-modal').classList.add('open'), 10);
+        }
+        function closeCart() {
+            document.getElementById('cart-modal').classList.remove('open');
+            setTimeout(() => document.getElementById('cart-modal').style.display = 'none', 300);
+        }
+        function removeFromCart(index) {
+            if (index >= 0 && index < cart.length) {
+                let items = document.querySelectorAll('.cart-item');
+                items[index].classList.add('removing');
+                setTimeout(() => {
+                    cart.splice(index, 1);
+                    updateCartCount();
+                    saveCart();
+                    openCart();
+                }, 300);
+            }
+        }
+        function showCheckoutForm() {
+            document.getElementById('checkout-form').style.display = 'block';
+            document.getElementById('checkout-btn').style.display = 'none';
+        }
+        function processOrder() {
+            const form = document.getElementById('order-form');
+            const formData = new FormData(form);
+            const orderDetails = Object.fromEntries(formData.entries());
+            orderDetails.products = cart.map(item => ({
+                name: item.name,
+                price: item.price,
+                quantity: item.quantity,
+                restaurantName: item.restaurantName
+            }));
+            const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+            orderDetails.subtotal = subtotal.toFixed(2);
+            orderDetails.shippingCost = shippingCost.toFixed(2);
+            orderDetails.total = (subtotal + shippingCost).toFixed(2);
+            console.log('Sending order details:', orderDetails);
+            fetch('process_order.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(orderDetails),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Received response:', data);
+                if (data.confirmationUrl) {
+                    window.location.href = data.confirmationUrl;
+                    cart = [];
+                    saveCart();
+                    updateCartCount();
+                    closeCart();
+                } else {
+                    throw new Error(data.error || 'Eroare necunoscută');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('A apărut o eroare la procesarea comenzii: ' + error.message);
+            });
+        }
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+        document.getElementById('order-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            processOrder();
+        });
+    </script>
+</body>
+</html>
